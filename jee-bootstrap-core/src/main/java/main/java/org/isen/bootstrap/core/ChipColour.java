@@ -1,4 +1,4 @@
-package java.org.isen.bootstrap.core;
+package main.java.org.isen.bootstrap.core;
 
 public enum ChipColour {
     WHRITE, BLACK
