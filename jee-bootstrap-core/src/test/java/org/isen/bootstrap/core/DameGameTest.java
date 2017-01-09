@@ -1,10 +1,15 @@
 package test.java.org.isen.bootstrap.core;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Fail.fail;
+
+import org.junit.Before;
+import org.junit.Test;
+
 
 /**
  * Created by Romain on 09/01/2017.
  */
-
 public class DameGameTest {
 
     private DameBoard board;
