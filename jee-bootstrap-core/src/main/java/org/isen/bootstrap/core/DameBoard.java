@@ -9,7 +9,6 @@ import java.util.List;
 public class DameBoard {
     public static final int caseNumber= 9;
     public int numberOfChip = 1;
-    public static final String OUTSIDE_OF_BOARD_ERROR = "It is not possible to play outside of the board";
 
     List<List<ChipColour>> board = new ArrayList<>(caseNumber);
 
@@ -23,22 +22,5 @@ public class DameBoard {
         }
     }
 
-    public void play(ChipColour colour, int column) {
-        if (column > caseNumber - 1) {
-            throw new GameException(OUTSIDE_OF_BOARD_ERROR);
-        }
-        List<ChipColour> col = board.get(column);
-        if (col.size() >= caseNumber) {
-            throw new GameException(OUTSIDE_OF_BOARD_ERROR);
-        }
-        col.add(colour);
-    }
 
-    public ChipColour getCell(int i, int j) {
-        if (i < 0 || i >= caseNumber) {
-            return null;
-        }
-        List<ChipColour> column = board.get(i);
-        return j < column.size() && j >= 0 ? column.get(j) : null;
-    }
 }
