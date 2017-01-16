@@ -6,14 +6,15 @@ import java.util.List;
 /**
  * Created by Romain on 09/01/2017.
  */
-public class DameBoard {
+public class DameBoard implements DameGame{
+
     public static final int caseNumber= 9;
     public int numberOfChip = 1;
     public static final String OUTSIDE_OF_BOARD_ERROR = "It is not possible to play outside of the board";
 
     List<List<ChipColour>> board = new ArrayList<>(caseNumber);
 
-    public void DameGameImpl(){
+    public DameBoard(){
         initBoard();
     }
 
@@ -23,6 +24,7 @@ public class DameBoard {
         }
     }
 
+    @Override
     public void play(ChipColour colour, int column) {
         if (column > caseNumber - 1) {
             throw new GameException(OUTSIDE_OF_BOARD_ERROR);
@@ -34,6 +36,7 @@ public class DameBoard {
         col.add(colour);
     }
 
+    @Override
     public ChipColour getCell(int i, int j) {
         if (i < 0 || i >= caseNumber) {
             return null;
