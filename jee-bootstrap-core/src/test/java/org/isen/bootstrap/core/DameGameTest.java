@@ -1,10 +1,11 @@
-package test.java.org.isen.bootstrap.core;
+package org.isen.bootstrap.core;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Fail.fail;
-
+import javafx.scene.control.Cell;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 
 /**
