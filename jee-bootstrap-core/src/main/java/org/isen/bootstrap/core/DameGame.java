@@ -12,7 +12,7 @@ public interface DameGame {
 	 * @param column
 	 * @throws GameException if it is not allowed to play in that cell.
 	 */
-    void play(ChipColour colour, int column) throws GameException;
+    void play(Chip.ChipColor colour, int column) throws GameException;
 
     /**
      * Returns the colour of the chip in a given cell, null if no
@@ -21,6 +21,6 @@ public interface DameGame {
      * @param row
      * @return
      */
-    ChipColour getCell(int column, int row);
+    Chip.ChipColor getCell(int column, int row);
 
 }

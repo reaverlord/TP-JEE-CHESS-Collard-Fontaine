@@ -2,7 +2,8 @@ package org.isen.bootstrap.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
-import static org.isen.bootstrap.core.ChipColour.WHITE;
+import static org.isen.bootstrap.core.Chip.ChipColor.WHITE;
+
 
 import org.junit.Before;
 import org.junit.Test;

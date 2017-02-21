@@ -1,47 +1,82 @@
 package org.isen.bootstrap.core;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Romain on 09/01/2017.
  */
-public class DameBoard implements DameGame{
+public class DameBoard {
+        private List<List<Cell>> board;
+        private List<Turn> turns;
+        private int ROWS = 9;
+        private int COLS = 9;
 
-    public static final int caseNumber= 9;
-    public int numberOfChip = 1;
-    public static final String OUTSIDE_OF_BOARD_ERROR = "It is not possible to play outside of the board";
 
-    List<List<ChipColour>> board = new ArrayList<>(caseNumber);
-
-    public DameBoard(){
-        initBoard();
-    }
-
-    private void initBoard() {
-        for (int i = 0; i < caseNumber; i++){
-            board.add(new ArrayList<ChipColour>(caseNumber));
+    public DameBoard() {
+        this.board = new ArrayList<>(ROWS);
+        this.turns = new LinkedList<>();
+        for (int rowIndex=0; rowIndex < ROWS; rowIndex++) {
+            ArrayList<Cell> row = new ArrayList<>(COLS);
+            for (int colIndex = 0; colIndex < COLS; colIndex++) {
+                row.add(new Cell(rowIndex, colIndex ));
+            }
+            this.board.add(row);
         }
     }
 
-    @Override
-    public void play(ChipColour colour, int column) {
-        if (column > caseNumber - 1) {
-            throw new GameException(OUTSIDE_OF_BOARD_ERROR);
+    private void initializeColor(int rowStart, int rowEnd, Chip.ChipColor color) {
+        for (int rowIndex=rowStart; rowIndex <= rowEnd; rowIndex++) {
+            for (int colIndex=0; colIndex <= COLS; colIndex++) {
+                if (rowIndex % 2 == 0) {
+                    if (colIndex % 2 == 0) {
+                            setChip(rowIndex, colIndex, new Chip(color, Chip.ChipType.CHIP));
+
+                    }
+                } else {
+                    if (colIndex % 2 == 1) {
+
+                            setChip(rowIndex, colIndex, new Chip(color, Chip.ChipType.CHIP));
+
+                    }
+                }
+            }
         }
-        List<ChipColour> col = board.get(column);
-        if (col.size() >= caseNumber) {
-            throw new GameException(OUTSIDE_OF_BOARD_ERROR);
-        }
-        col.add(colour);
     }
 
-    @Override
-    public ChipColour getCell(int i, int j) {
-        if (i < 0 || i >= caseNumber) {
-            return null;
-        }
-        List<ChipColour> column = board.get(i);
-        return j < column.size() && j >= 0 ? column.get(j) : null;
+    public void initialize() {
+        initializeColor(1, 4, Chip.ChipColor.WHITE);
+        initializeColor(7, 10, Chip.ChipColor.BLACK);
     }
+
+
+    public Cell getCell(int row, int col)  {
+
+        return this.board.get(row - 1).get(col - 1);
+    }
+
+    public void setCell(int row, int col, Cell cell) {
+        this.board.get(row - 1).set(col - 1, cell);
+    }
+
+    public boolean hasChip(int row, int col) {
+        return getCell(row, col).hasChip();
+    }
+
+    public Chip getChip(int row, int col) throws CellEmptyException {
+        return getCell(row, col).getChip();
+    }
+
+    public void setChip(int row, int col, Chip chip)  {
+        getCell(row, col).setChip(chip);
+    }
+
+
+
+
+
+
+
 }
+
