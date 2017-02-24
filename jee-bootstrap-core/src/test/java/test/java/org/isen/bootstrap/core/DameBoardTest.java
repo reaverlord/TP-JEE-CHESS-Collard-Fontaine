@@ -12,7 +12,7 @@ import org.junit.Test;
 /**
  * Created by Romain on 09/01/2017.
  */
-public class DameGameTest {
+public class DameBoardTest {
 
     private DameGame board;
 
