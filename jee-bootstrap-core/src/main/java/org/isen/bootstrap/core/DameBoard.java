@@ -131,12 +131,12 @@ public class DameBoard {
         }
     }
 
-    public int chipCount(Chip.ChipColor color) {
+    public int chipCount(Chip.ChipColor color) throws CellEmptyException {
         int result = 0;
         for (int row=1; row <= ROWS; row++) {
             for (int col=1; col <= COLS; col++) {
                     if (hasChip(row, col)) {
-                        if (getChip(row, col).getchipColor() == color) {
+                        if (getChip(row, col).getChipColor() == color) {
                             result++;
                         }
                     }
