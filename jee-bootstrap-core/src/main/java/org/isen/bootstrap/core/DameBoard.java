@@ -8,12 +8,27 @@ import java.util.List;
  * Created by Romain on 09/01/2017.
  */
 public class DameBoard {
-        private List<List<Cell>> board;
-        private List<Turn> turns;
-        private int ROWS = 9;
-        private int COLS = 9;
+    private List<List<Cell>> board;
+    private List<Turn> turns;
+    private int ROWS = 9;
+    private int COLS = 9;
 
+    public List<List<Cell>> getBoard() {
+        return board;
+    }
 
+    public List<Turn> getTurns() {
+        return turns;
+    }
+
+    public int getROWS() {
+        return ROWS;
+    }
+
+    public int getCOLS() {
+        return COLS;
+    }
+    
     public DameBoard() {
         this.board = new ArrayList<>(ROWS);
         this.turns = new LinkedList<>();
@@ -49,7 +64,6 @@ public class DameBoard {
         initializeColor(1, 4, Chip.ChipColor.WHITE);
         initializeColor(7, 10, Chip.ChipColor.BLACK);
     }
-
 
     public Cell getCell(int row, int col)  {
 
