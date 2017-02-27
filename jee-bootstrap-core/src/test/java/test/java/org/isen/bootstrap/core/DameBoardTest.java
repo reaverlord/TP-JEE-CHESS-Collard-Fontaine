@@ -33,8 +33,8 @@ public class DameBoardTest {
     @Test
     public void testPromoteToQueen() throws IllegalMoveException {
         Chip testChip = new Chip(Chip.ChipColor.WHITE, Chip.ChipType.CHIP);
-        this.dameBoardTest.getCell(7,1).setChip(testChip);
-        this.dameBoardTest.playTurn(7,1,8,2);
+        this.dameBoardTest.getCell(8,2).setChip(testChip);
+        this.dameBoardTest.playTurn(8,2,9,3);
         assertEquals(testChip.getChipType(), Chip.ChipType.QUEEN);
     }
 
