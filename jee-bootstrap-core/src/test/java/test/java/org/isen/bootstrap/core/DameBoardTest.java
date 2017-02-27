@@ -1,7 +1,9 @@
-package org.isen.bootstrap.core;
+package test.java.org.isen.bootstrap.core;
 
 
 import static org.junit.Assert.*;
+
+import org.isen.bootstrap.core.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,20 +41,20 @@ public class DameBoardTest {
     @Test
     public void testPromoteToBlackQueen() throws IllegalMoveException{
         Chip testChip = new Chip(Chip.ChipColor.BLACK, Chip.ChipType.CHIP);
-        this.dameBoardTest.getCell(2,4).setChip(testChip);
-        this.dameBoardTest.playTurn(2,4,1,3);
+        this.dameBoardTest.getCell(1,3).setChip(testChip);
+        this.dameBoardTest.playTurn(1,3,0,2);
         assertEquals(testChip.getChipType(), Chip.ChipType.QUEEN);
     }
 
     @Test
     public void whiteQueenCanGoBackwards() throws BoardBoundsException, IllegalMoveException, CellEmptyException {
-        this.dameBoardTest.setChip(10, 2, new Chip(Chip.ChipColor.WHITE, Chip.ChipType.QUEEN));
-        this.dameBoardTest.playTurn(10, 2, 9, 3);
-        assertEquals(this.dameBoardTest.getChip(9, 3).getChipType(), Chip.ChipType.QUEEN);
-        assertEquals(this.dameBoardTest.getChip(9, 3).getChipColor(), Chip.ChipColor.WHITE);
-        this.dameBoardTest.playTurn(9, 3, 7, 5);
-        assertEquals(this.dameBoardTest.getChip(7, 5).getChipColor(), Chip.ChipColor.WHITE);
-        assertEquals(this.dameBoardTest.getChip(7, 5).getChipType(), Chip.ChipType.QUEEN);
+        this.dameBoardTest.setChip(9, 1, new Chip(Chip.ChipColor.WHITE, Chip.ChipType.QUEEN));
+        this.dameBoardTest.playTurn(9, 1, 8, 2);
+        assertEquals(this.dameBoardTest.getChip(8, 2).getChipType(), Chip.ChipType.QUEEN);
+        assertEquals(this.dameBoardTest.getChip(8, 2).getChipColor(), Chip.ChipColor.WHITE);
+        this.dameBoardTest.playTurn(8, 2, 6, 4);
+        assertEquals(this.dameBoardTest.getChip(6, 4).getChipColor(), Chip.ChipColor.WHITE);
+        assertEquals(this.dameBoardTest.getChip(6, 4).getChipType(), Chip.ChipType.QUEEN);
     }
     @Test
     public void testGetCell(){
